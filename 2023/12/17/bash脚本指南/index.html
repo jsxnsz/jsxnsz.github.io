@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>8jzhang的blog | 8jzhang的blog</title><meta name="author" content="8jzhang"><meta name="copyright" content="8jzhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="制作一个bat脚本用于定期备份 ~后边是从左数第几个，逗号后向后继续取几个 注意系统规定的时间格式有可能不同 xcopy复制文件用法 %Xcopy  [] [&#x2F;w] [&#x2F;p] [&#x2F;c] [&#x2F;v] [&#x2F;q] [&#x2F;f] [&#x2F;l] [&#x2F;g] [&#x2F;d [:MM-DD-YYYY]] [&#x2F;u] [&#x2F;i] [&#x2F;s [&#x2F;e]] [&#x2F;t] [&#x2F;k] [&#x2F;r] [&#x2F;h] [{&#x2F;a | &#x2F;m}] [&#x2F;n] [&#x2F;o] [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8jzhang的blog">
+<meta property="og:url" content="http://example.com/2023/12/17/bash%E8%84%9A%E6%9C%AC%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="8jzhang的blog">
+<meta property="og:description" content="制作一个bat脚本用于定期备份 ~后边是从左数第几个，逗号后向后继续取几个 注意系统规定的时间格式有可能不同 xcopy复制文件用法 %Xcopy  [] [&#x2F;w] [&#x2F;p] [&#x2F;c] [&#x2F;v] [&#x2F;q] [&#x2F;f] [&#x2F;l] [&#x2F;g] [&#x2F;d [:MM-DD-YYYY]] [&#x2F;u] [&#x2F;i] [&#x2F;s [&#x2F;e]] [&#x2F;t] [&#x2F;k] [&#x2F;r] [&#x2F;h] [{&#x2F;a | &#x2F;m}] [&#x2F;n] [&#x2F;o] [">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/touxiang.jpg">
+<meta property="article:published_time" content="2023-12-17T05:26:42.856Z">
+<meta property="article:modified_time" content="2023-12-17T05:03:43.830Z">
+<meta property="article:author" content="8jzhang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/touxiang.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/12/17/bash%E8%84%9A%E6%9C%AC%E6%8C%87%E5%8D%97/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '8jzhang的blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-17 13:03:43'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"><link rel="alternate" href="/atom.xml" title="8jzhang的blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/DSCF4733.JPG')"><nav id="nav"><span id="blog-info"><a href="/" title="8jzhang的blog"><span class="site-name">8jzhang的blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-17T05:26:42.856Z" title="发表于 2023-12-17 13:26:42">2023-12-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-17T05:03:43.830Z" title="更新于 2023-12-17 13:03:43">2023-12-17</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>制作一个bat脚本用于定期备份</p>
+<p>~后边是从左数第几个，逗号后向后继续取几个</p>
+<p>注意系统规定的时间格式有可能不同</p>
+<p>xcopy复制文件用法</p>
+<p>%Xcopy <Source> [<Destination>] [/w] [/p] [/c] [/v] [/q] [/f] [/l] [/g] [/d [:MM-DD-YYYY]] [/u] [/i] [/s [/e]] [/t] [/k] [/r] [/h] [{/a | /m}] [/n] [/o] [/x] [/exclude:FileName1[+[FileName2]][+[FileName3]]] [{/y | /-y}] [/z] [/b] [/j] [/compress]%</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">color</span> <span class="number">0</span>a</span><br><span class="line"><span class="built_in">set</span> &quot;D=<span class="variable">%date:/=-%</span>&quot;</span><br><span class="line"><span class="built_in">set</span> &quot;Year=<span class="variable">%date:~0,4%</span>&quot;</span><br><span class="line"><span class="built_in">set</span> &quot;Month=<span class="variable">%date:~5,2%</span>&quot;</span><br><span class="line"><span class="built_in">set</span> &quot;<span class="built_in">Date</span>=<span class="variable">%date:~8,2%</span>&quot;</span><br><span class="line"><span class="built_in">set</span> &quot;Ymd=NTI-<span class="variable">%D:~0,10%</span>&quot;</span><br><span class="line"><span class="built_in">set</span> source=C:\Users\nugat\NTI</span><br><span class="line"><span class="built_in">set</span> destination=C:\Users\nugat\bats\BACKUP\<span class="variable">%ymd%</span></span><br><span class="line"><span class="built_in">MD</span> C:\Users\nugat\bats\BACKUP\<span class="variable">%ymd%</span></span><br><span class="line"><span class="built_in">XCOPY</span> <span class="variable">%source%</span> <span class="variable">%destination%</span> /S /E /C</span><br><span class="line"><span class="built_in">pause</span></span><br><span class="line">@<span class="built_in">echo</span> <span class="built_in">MD</span> 【后面为目录地址】\<span class="variable">%ymd%</span> 即可 </span><br><span class="line">@<span class="built_in">echo</span> 例如 <span class="built_in">MD</span> D:\<span class="variable">%ymd%</span> 就是在D盘目录下创建一个<span class="number">20201205</span>的文件夹 </span><br><span class="line">@<span class="built_in">echo</span> 如果需要-符号 把<span class="built_in">set</span> &quot;Ymd=<span class="variable">%date:~,4%</span><span class="variable">%date:~5,2%</span><span class="variable">%date:~8,2%</span>&quot;  改成<span class="built_in">set</span> &quot;Ymd=<span class="variable">%date:~0,10%</span>&quot;    然后创建的文件夹名字就是YYYY-MM-DD</span><br><span class="line">@<span class="built_in">echo</span> 如果需要添加上星期几的日期就改成 <span class="built_in">set</span> &quot;Ymd=<span class="variable">%date%</span>&quot;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int*b= new int[50];</span><br></pre></td></tr></table></figure>
+<h2 id="forfiles命令"><a href="#forfiles命令" class="headerlink" title="forfiles命令"></a>forfiles命令</h2><ul>
+<li>p：指定目录，后面双引号紧跟目录</li>
+<li>/s：将进行递归搜索子目录</li>
+<li>/m：指定文件类型，后面指定文件类型，例如*.zip为压缩包格式</li>
+<li>/d：-7表示7天前的文件</li>
+<li>/c：执行命令，后面双引号括起来的是删除文件命令，即对每个符合格式和日期要求的文件进行删除操作</li>
+</ul>
+<p>例如下方命令表示，删除D:\Backup\autoDelete目录下及其子目录下的7日前的所有类型的文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">forfiles /p &quot;D:\Backup\autoDelete&quot; /s /m *.* /d -7 /c &quot;cmd /c del @path&quot;</span><br><span class="line">forfiles /p &quot;C:\Users\nugat\bats\BACKUP&quot; /s  /c &quot;cmd /c del @path&quot;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">8jzhang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/12/17/bash%E8%84%9A%E6%9C%AC%E6%8C%87%E5%8D%97/">http://example.com/2023/12/17/bash脚本指南/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">8jzhang的blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/touxiang.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/11/06/%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AE%8C%E6%88%90%E5%AF%B9%E6%9E%9C%E5%9B%AD%E7%9A%84%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%E5%8F%8A%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" title="使用深度学习与计算机视觉完成对果园的语义分割及三维重建"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">使用深度学习与计算机视觉完成对果园的语义分割及三维重建</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">8jzhang</div><div class="author-info__description">这是8jzhang的blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jsxnsz"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#forfiles%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">forfiles命令</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/17/bash%E8%84%9A%E6%9C%AC%E6%8C%87%E5%8D%97/" title="无题">无题</a><time datetime="2023-12-17T05:26:42.856Z" title="发表于 2023-12-17 13:26:42">2023-12-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/06/%E4%BD%BF%E7%94%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%AE%8C%E6%88%90%E5%AF%B9%E6%9E%9C%E5%9B%AD%E7%9A%84%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%E5%8F%8A%E4%B8%89%E7%BB%B4%E9%87%8D%E5%BB%BA/" title="使用深度学习与计算机视觉完成对果园的语义分割及三维重建">使用深度学习与计算机视觉完成对果园的语义分割及三维重建</a><time datetime="2023-11-05T16:54:58.000Z" title="发表于 2023-11-06 00:54:58">2023-11-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/05/hello-world/" title="Hello World">Hello World</a><time datetime="2023-11-05T10:49:30.681Z" title="发表于 2023-11-05 18:49:30">2023-11-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/05/%E5%9F%BA%E4%BA%8E%20Deform%20%E7%9A%84%E7%A2%B3%E7%BA%A4%E7%BB%B4%E5%A4%8D%E5%90%88%E6%9D%90%E6%96%99%E5%9C%A8%E4%BD%8E%E6%B8%A9%E4%BB%8B%E8%B4%A8%E4%B8%8B%E9%93%A3%E5%89%8A%E8%BF%87%E7%A8%8B%E6%9C%89%E9%99%90%E5%85%83%E5%88%86%E6%9E%90/" title="基于Deform的碳纤维复合材料在低温介质下铣削过程有限元分析">基于Deform的碳纤维复合材料在低温介质下铣削过程有限元分析</a><time datetime="2023-11-05T09:20:37.000Z" title="发表于 2023-11-05 17:20:37">2023-11-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 8jzhang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
